@@ -1,8 +1,13 @@
 import * as ActionTypes from './ActionTypes';
 
-export const drops = (state = { isLoading: true,
-                                 errMess: null,
-                                 drops:[]}, action) => {
+const initialState = {
+    isLoading: true,
+    errMess: null,
+    drops:[],
+    userId: 1
+}
+
+export const drops = (state = initialState, action) => {
   switch (action.type) {
       case ActionTypes.ADD_DROPS:
           return {...state, isLoading: false, errMess: null, drops: action.payload};

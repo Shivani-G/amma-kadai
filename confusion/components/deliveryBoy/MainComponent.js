@@ -1,10 +1,24 @@
 import React, { Component } from 'react';
 import { View, Platform } from 'react-native';
-import { Home } from './HomeComponent';
+import Home from './HomeComponent';
 import { DROPS } from './data/dropLocations';
 import { Login, Logout } from './LoginComponent'
 import { createStackNavigator,createDrawerNavigator } from 'react-navigation';
 import { Icon } from 'react-native-elements';
+
+import { connect } from 'react-redux';
+import { fetchDrops } from './redux/ActionCreators';
+
+const mapStateToProps = state => {
+  return {
+    drops: state.drops,
+    userId: 1 // to change
+  }
+}
+
+const mapDispatchToProps = dispatch => ({
+  fetchDrops: () => dispatch(fetchDrops())
+})
 
 const HomeNavigator = createStackNavigator({
         Home: { screen: Home }
@@ -80,6 +94,10 @@ const MainNavigator = createDrawerNavigator({
 
 class Main extends Component {
 
+  componentDidMount() {
+    this.props.fetchDrops();
+  }
+
   render() {
  
     return (
@@ -90,4 +108,4 @@ class Main extends Component {
   }
 }
   
-export default Main;
+export default connect(mapStateToProps, mapDispatchToProps)(Main);

@@ -1,9 +1,11 @@
 import * as ActionTypes from './ActionTypes';
-import { baseUrl } from '../shared/baseUrl';
+import { baseUrl } from '../config/baseUrl';
 
 export const fetchDrops = () => (dispatch) => {
     return fetch(baseUrl + 'drops')
     .then(response => {
+        console.log(response);
+        console.log("received response");
         if (response.ok) {
           return response;
         } else {
@@ -16,9 +18,9 @@ export const fetchDrops = () => (dispatch) => {
             var errmess = new Error(error.message);
             throw errmess;
       })
-    .then(response => response.json())
-    .then(comments => dispatch(addComments(comments)))
-    .catch(error => dispatch(commentsFailed(error.message)));
+    .then(response => {console.log("Response");console.log(response);return response.json()})
+    .then(drops => {console.log("Drops");console.log(drops);dispatch(addDrops(drops))})
+    .catch(error => {console.log("Error");dispatch(dropsFailed(error.message))});
 };
 
 export const dropsLoading = () => ({
@@ -30,7 +32,7 @@ export const dropsFailed = (errmess) => ({
     payload: errmess
 });
 
-export const addDrop = (comments) => ({
-    type: ActionTypes.ADD_DROP,
-    payload: comments
+export const addDrops = (drops) => ({
+    type: ActionTypes.ADD_DROPS,
+    payload: drops
 });

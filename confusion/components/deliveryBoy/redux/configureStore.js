@@ -1,7 +1,7 @@
 import {createStore, combineReducers, applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
-import { drops } from './dishes';
+import { drops } from './reducer';
 
 
 const middleware = applyMiddleware(thunk,logger);
@@ -9,10 +9,7 @@ const middleware = applyMiddleware(thunk,logger);
 export const ConfigureStore = () => {
     const store = createStore(
         combineReducers({
-            dishes,
-            comments,
-            promotions,
-            leaders
+            drops
         }),
         middleware
     );

@@ -3,38 +3,17 @@ import { View, FlatList } from 'react-native';
 import { ListItem } from 'react-native-elements';
 import { DROPS } from './data/dropLocations';
 
-export class Home extends Component {
+import { connect } from 'react-redux';
+import { baseUrl } from './config/baseUrl';
 
-    constructor(props){
-        super(props);
-        this.state = {
-            drops:DROPS
-        };
-    }
-
-    static navigationOptions = {
-        title:'Home'
-    };
-
-    render(){
-        return(
-            <CheckList drops={this.state.drops} />
-        );
+const mapStateToProps = state => {
+    return {
+      drops: state.drops
     }
 }
 
-
 class CheckList extends Component {
-
-    constructor(props){
-        super(props);
-        this.state = {
-            drops:props.drops
-        };
-    }
-
     
-
     render(){
         const renderItem = ({item, index}) => {
             return (
@@ -48,12 +27,28 @@ class CheckList extends Component {
                 />
             );
         };
+
         return (
                 <FlatList 
-                    data={this.state.drops}
+                    data={this.props.drops}
                     renderItem={renderItem}
                     keyExtractor={item => item.id.toString()}
                 />
         );
     }
 }
+
+class Home extends Component {
+
+    static navigationOptions = {
+        title:'Home'
+    };
+
+    render(){
+        return(
+            <CheckList drops={this.props.drops.drops} />
+        );
+    }
+}
+
+export default connect(mapStateToProps)(Home);
