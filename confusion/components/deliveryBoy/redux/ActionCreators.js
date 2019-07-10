@@ -36,3 +36,13 @@ export const addDrops = (drops) => ({
     type: ActionTypes.ADD_DROPS,
     payload: drops
 });
+
+export const addDropToReachedList = (drop) => ({
+    type: ActionTypes.ADD_DROP_TO_REACHED_LIST,
+    payload: drop
+});
+
+export const removeDropFromReachedList = (drop) => ({
+    type: ActionTypes.REMOVE_DROP_FROM_REACHED_LIST,
+    payload: drop
+});

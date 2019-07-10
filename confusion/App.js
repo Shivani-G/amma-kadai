@@ -1,7 +1,7 @@
 import React from 'react';
-import Main from './components/deliveryBoy/MainComponent';
+import Main from './components/customer/MainComponent';
 import { Provider } from 'react-redux';
-import { ConfigureStore } from './components/deliveryBoy/redux/configureStore';
+import { ConfigureStore } from './components/customer/redux/configureStore';
 
 const store = ConfigureStore();
 

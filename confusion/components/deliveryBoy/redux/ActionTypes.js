@@ -1,6 +1,8 @@
 export const DROPS_LOADING = 'DROPS_LOADING';
 export const ADD_DROPS = 'ADD_DROPS';
 export const DROPS_FAILED = 'DROPS_FAILED';
+export const ADD_DROP_TO_REACHED_LIST = 'ADD_DROP_TO_REACHED_LIST';
+export const REMOVE_DROP_FROM_REACHED_LIST = 'REMOVE_DROP_FROM_REACHED_LIST';
 export const LOGIN = 'LOGIN';
 export const REGISTER = 'REGISTER';
 export const LOGOUT = 'LOGOUT';
