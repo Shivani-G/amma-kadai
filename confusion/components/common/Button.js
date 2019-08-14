@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
   Text,
-  TouchableHighlight,
+  TouchableOpacity,
 } from 'react-native';
  
 const Button = (props) => {
@@ -16,15 +16,15 @@ const Button = (props) => {
     }
  
     return (
-        <TouchableHighlight 
-            underlayColor="#ccc"
+        <TouchableOpacity 
+            // underlayColor="#ccc"
             onPress={props.onPress} 
-            style={[
-                props.noDefaultStyles ? '' : styles.button, 
-                props.styles ? props.styles.button : '']}
+            disabled={props.disabled}
+            style={
+                props.style ? props.styles.button : (props.disabled? styles.disabledButton : styles.button)}
         >
             { getContent() }
-        </TouchableHighlight>
+        </TouchableOpacity>
     );
 }
  
@@ -32,8 +32,15 @@ const styles = StyleSheet.create({
     button: {
         alignItems: 'center',
         justifyContent: 'center',
-        padding: 20
+        padding: 20,
+        backgroundColor: '#512DA8'
     },
+    disabledButton: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: 20,
+        backgroundColor: '#D3D3D3'
+    }
 });
  
 export default Button;

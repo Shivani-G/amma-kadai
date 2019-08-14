@@ -8,7 +8,7 @@ import {
 const Label = (props) => {
     return (
         <Text 
-            style={props.styles && props.styles.textLabel ? props.styles.textLabel : styles.textLabel}
+            style={props.style ? props.style : styles.textLabel}
         >
             {props.text}
         </Text>

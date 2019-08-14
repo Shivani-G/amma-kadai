@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
 import { View, Platform } from 'react-native';
 import Home from './OrderComponent';
-import { Login, Logout } from './LoginComponent'
+import { Login } from './LoginComponent';
+import RequestedOrderComponent from './RequestedOrderComponent';
+import Profile from './ProfileComponent';
 import { createStackNavigator,createDrawerNavigator } from 'react-navigation';
 import { Icon } from 'react-native-elements';
 
 import { connect } from 'react-redux';
-import { fetchMenu } from './redux/ActionCreators';
+import { fetchMenu } from './services/FoodService';
 
 const mapStateToProps = state => {
   return {
-    menu: state.menu,
-    userId: 1 // to change
+    user: state.order.userProfile
   }
 }
 
@@ -20,10 +21,31 @@ const mapDispatchToProps = dispatch => ({
 })
 
 const HomeNavigator = createStackNavigator({
-        Home: { screen: Home }
+        Home: { screen: Home },
+        RequestedOrder: {screen: RequestedOrderComponent }
     },
     {
         initialRouteName: 'Home',
+        navigationOptions: ({navigation})=>({
+            headerStyle: {
+                backgroundColor: "#512DA8"
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+                color: "#fff"            
+            },
+            headerLeft: <Icon name="menu" 
+                              size={24}
+                              color='white'
+                              onPress={()=>navigation.toggleDrawer()} />
+        })
+    }
+);
+
+const LoginNavigator = createStackNavigator({
+        Login: { screen: Login }
+    },
+    {
         navigationOptions: ({navigation})=>({
             headerStyle: {
                 backgroundColor: "#512DA8"
@@ -53,14 +75,14 @@ const MainNavigator = createDrawerNavigator({
               size={24}
               color={tintColor}
             />
-          ),
+          )
         }
       },
     Login: 
-      { screen: Login,
+      { screen: LoginNavigator,
         navigationOptions: {
-          title: 'Login',
-          drawerLabel: 'Login',
+          // title: 'Login',
+          drawerLabel: 'User',
           drawerIcon: ({ tintColor, focused }) => (
             <Icon
               name='user'
@@ -68,22 +90,7 @@ const MainNavigator = createDrawerNavigator({
               size={24}
               color={tintColor}
             />
-          ),
-        }, 
-      },
-    Logout: 
-      { screen: Logout,
-        navigationOptions: {
-          title: 'Logout',
-          drawerLabel: 'Logout',
-          drawerIcon: ({ tintColor, focused }) => (
-            <Icon
-              name='bed'
-              type='font-awesome'            
-              size={24}
-              color={tintColor}
-            />
-          ),
+          )
         }, 
       }
 }, {
@@ -98,7 +105,6 @@ class Main extends Component {
   }
 
   render() {
- 
     return (
       <View style={{flex:1, paddingTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight }}>
         <MainNavigator />

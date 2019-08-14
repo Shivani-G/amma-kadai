@@ -7,3 +7,5 @@ export const UPDATE_CART = 'UPDATE_CART';
 export const LOGIN = 'LOGIN';
 export const REGISTER = 'REGISTER';
 export const LOGOUT = 'LOGOUT';
+export const UPDATE_RECENT_ORDER = 'UPDATE_RECENT_ORDER';
+export const EMPTY_CART = 'EMPTY_CART';

@@ -6,7 +6,8 @@ const initialState = {
     errMess: null,
     drops:[],
     userId: 1,
-    reached:[]
+    reached:[],
+    user: null
 };
 
 export const drops = (state = initialState, action) => {

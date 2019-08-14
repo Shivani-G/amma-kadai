@@ -7,7 +7,7 @@ import {
  
 const Row = (props) => {
     return (
-        <View style={styles.labelContainer}>
+        <View style={props.style?props.style:styles.labelContainer}>
             { props.children }
         </View>
     );
