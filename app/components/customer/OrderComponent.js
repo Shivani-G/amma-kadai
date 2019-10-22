@@ -106,6 +106,7 @@ class List extends Component {
         console.log("Menu for customer, Mn:", menuToBeDisplayed);
         console.log("Shopping cart: ", this.props.cart);
         mo.forEach((item) => {
+            var x;
             x = new MenuItem(item.id, item.name, false, item.price, item.quantity, item.veg);
             menuToBeDisplayed.push(x);
             var itemInCart = this.props.cart.find(c=>c.id===item.id.toString() && c.quantity>0);

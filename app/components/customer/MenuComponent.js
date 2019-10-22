@@ -1,34 +1,22 @@
 import React, { Component } from 'react';
 import { View, FlatList, ScrollView, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import Dialog, { DialogContent } from 'react-native-popup-dialog';  
-import { ListItem, CheckBox, Icon, Card } from 'react-native-elements';
 
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux'
-import { updateCart, emptyCart } from './redux/ActionCreators';
-import { fetchRecentOrder } from './services/FoodService';
-
-import Row from '../common/Row';
-import Label from '../common/Label';
-import Button from '../common/Button';
-import RequestedOrderComponent from './RequestedOrderComponent';
-import { orderStatus } from './Constants';
 
 
 const List = ({updateCart}) => {
 
 
     // onPressNumericInput = (item, value) => {
-    //     item.quantity=value; 
+    //     item.quantity=value;
     //     console.log(item.name+":"+item.quantity);
     //     this.props.updateCart(item)
 
     // }
 
-    
-    
 
-    
+
+
+
     var mo = [...this.props.menu]
     console.log("Menu behind scenes, Mo:");
     var menuToBeDisplayed = []

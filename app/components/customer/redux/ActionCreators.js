@@ -1,5 +1,4 @@
 import * as ActionTypes from './ActionTypes';
-import { baseUrl } from '../config/baseUrl';
 
 export const menuLoading = () => ({
     type: ActionTypes.MENU_LOADING
