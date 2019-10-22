@@ -1,8 +1,8 @@
-import { baseUrl } from '../config/baseUrl';
+import c from '../config';
 import { addMenu, menuFailed, updateRecentOrder } from '../redux/ActionCreators';
 
 export const fetchMenu = () => (dispatch) => {
-    return fetch(baseUrl + 'db.json')
+    return fetch(c.apiUrl + 'db.json')
         .then(response => {
                 console.log(response);
                 console.log("received response for fetch menu");
@@ -24,7 +24,7 @@ export const fetchMenu = () => (dispatch) => {
 };
 
 export const fetchRecentOrder = () => (dispatch) => {
-  return fetch(baseUrl + 'db.json')
+  return fetch(c.apiUrl + 'db.json')
   .then(response => {
     if(response.ok) {
       return response.json();

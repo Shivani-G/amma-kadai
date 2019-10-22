@@ -1,11 +1,11 @@
-import { baseUrl } from '../config/baseUrl';
+import c from '../config';
 import { login, logout } from '../redux/ActionCreators';
 import md5 from 'md5';
 
 export const getUserOnLogin = (email, password) =>  {
-	console.log("inside getUserOnLogin, url: ", baseUrl+'/user/login.php');
+	console.log("inside getUserOnLogin, url: ", c.apiUrl+'/user/login.php');
 	console.log(md5(password));
-	return fetch(baseUrl + '/user/login.php', {
+	return fetch(c.apiUrl + '/user/login.php', {
 	  method: 'POST',
 	  headers: {
 	    'Accept': 'application/json',
